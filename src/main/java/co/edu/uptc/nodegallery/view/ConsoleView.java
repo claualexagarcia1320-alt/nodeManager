@@ -13,9 +13,9 @@ public class ConsoleView {
     }
 
     public void start() {
-        boolean activo = true;
+        boolean active = true;
 
-        while (activo) {
+        while (active) {
             System.out.println("\nMENÚ:");
             System.out.println("1. Cargar Carpeta 1");
             System.out.println("2. Cargar Carpeta 2");
@@ -25,13 +25,13 @@ public class ConsoleView {
             System.out.println("6. Salir");
             System.out.print("Elige una opción: ");
 
-            int opcion = scanner.nextInt();
+            int option = scanner.nextInt();
             scanner.nextLine();
 
-            if (opcion >= 1 && opcion <= 3) {
-                presenter.cargarCarpetaPorOpcion(opcion);
+            if (option >= 1 && option <= 3) {
+                presenter.loadFolderByOption(option);
             } else {
-                switch (opcion) {
+                switch (option) {
                     case 4:
                         presenter.countImages();
                         break;
@@ -40,7 +40,7 @@ public class ConsoleView {
                         System.out.println("Nodos liberados correctamente");
                         break;
                     case 6:
-                        activo = false;
+                        active = false;
                         System.out.println("¡Saliendo del programa!");
                         break;
                     default:

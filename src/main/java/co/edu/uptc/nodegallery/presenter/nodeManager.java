@@ -14,34 +14,34 @@ public class nodeManager {
         this.view = view;
     }
 
-    public void cargarCarpetaPorOpcion(int opcion) {
+    public void loadFolderByOption(int option) {
         String rutaCarpeta = "";
-        if (opcion == 1) {
+        if (option == 1) {
             rutaCarpeta = "src/main/java/co/edu/uptc/nodegallery/images1";
-        } else if (opcion == 2) {
+        } else if (option == 2) {
             rutaCarpeta = "src/main/java/co/edu/uptc/nodegallery/images2";
-        } else if (opcion == 3) {
+        } else if (option == 3) {
             rutaCarpeta = "src/main/java/co/edu/uptc/nodegallery/images3";
         }
 
         long memBefore = (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / (1024 * 1024);
 
-        File carpeta = new File(rutaCarpeta);
-        File[] archivos = carpeta.listFiles();
+        File folder = new File(rutaCarpeta);
+        File[] files = folder.listFiles();
 
-        if (archivos != null) {
-            int contador = 0;
-            for (int i = 0; i < archivos.length; i++) {
-                File archivo = archivos[i];
-                if (archivo.isFile()) {
-                    String name = archivo.getName().toLowerCase();
+        if (files != null) {
+            int count = 0;
+            for (int i = 0; i < files.length; i++) {
+                File file = files[i];
+                if (file.isFile()) {
+                    String name = file.getName().toLowerCase();
                     if (name.endsWith(".jpg") || name.endsWith(".jpeg") || name.endsWith(".png")) {
-                        addImage(archivo.getAbsolutePath());
-                        contador++;
+                        addImage(file.getAbsolutePath());
+                        count++;
                     }
                 }
             }
-            view.showMessage("¡Se cargaron " + contador + " imágenes exitosamente!");
+            view.showMessage("¡Se cargaron " + count + " imágenes exitosamente!");
         } else {
             view.showMessage("La carpeta está vacía o la ruta no es válida.");
         }
